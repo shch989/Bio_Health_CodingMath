@@ -11,40 +11,34 @@
 #  - BMI가 30 이상이면 비만
 
 
-name = input("이름을 입력하세요: ")
-gender = input("성별을 입력하세요 (남자/여자): ")
-waist = float(input("허리둘레(cm)를 입력하세요: "))
-hip = float(input("엉덩이둘레(cm)를 입력하세요: "))
-height = float(input("신장(cm)을 입력하세요: "))
-weight = float(input("체중(kg)을 입력하세요: "))
 
-whp = waist / hip
-bmi = weight / ((height / 100) ** 2)
+user = []
+user.append(input("이름을 입력하세요: "))
+user.append(input("성별을 입력하세요 (남자/여자): "))
+user.append(float(input("허리둘레(cm)를 입력하세요: ")))
+user.append(float(input("엉덩이둘레(cm)를 입력하세요: ")))
+user.append(float(input("신장(cm)을 입력하세요: ")))
+user.append(float(input("체중(kg)을 입력하세요: ")))
+
+whp = user[2] / user[3]
+bmi = user[5] / ((user[4] / 100) ** 2)
 
 print("===== 분석 결과 =====")
-print(f"이름: {name}")
-print(f"성별: {gender}")
+print(f"이름: {user[0]}")
+print(f"성별: {user[1]}")
 
-if gender == "남자":
-    if whp >= 0.9:
-        print("비만입니다.")
-    else:
-        print("비만이 아닙니다.")
-elif gender == "여자":
-    if whp >= 0.85:
-        print("비만입니다.")
-    else:
-        print("비만이 아닙니다.")
+if user[1] == "남자" and whp >= 0.9 or user[1] == "여자" and whp >= 0.85:
+    print("비만입니다.")
 else:
-    print("잘못된 성별 입력입니다.")
+    print("비만이 아닙니다.")
 
 print(f"BMI: {bmi:.1f}")
 
 if bmi <= 19.9:
-    print("저체중입니다. 재측정이 필요합니다.")
+    print("재측정.")
 elif bmi <= 24.9:
-    print("정상입니다.")
+    print("정상.")
 elif bmi <= 29.9:
-    print("과체중입니다.")
+    print("과체중.")
 else:
-    print("비만입니다.")
+    print("비만.")

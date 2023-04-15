@@ -10,37 +10,37 @@
 
 import random
 
-game_count = 0
-user_win = 0
-user_draw = 0
-user_lose = 0
+count = 0
+win = 0
+draw = 0
+lose = 0
 
 while True:
-    user_input = input("가위, 바위, 보 중 하나를 입력하세요 (종료: 0): ")
+    user = input("가위, 바위, 보 중 하나를 입력하세요 (종료: 0): ")
     
-    if user_input == '0':
+    if user == '0':
         print("게임 종료!")
-        print("게임 시행 횟수:", game_count)
-        print("전적: {}승 {}패 {}무".format(user_win, user_lose, user_draw))
+        print("게임 시행 횟수:", count)
+        print("전적: {}승 {}패 {}무".format(win, lose, draw))
         break
         
-    if user_input not in ['가위', '바위', '보']:
+    if user not in ['가위', '바위', '보']:
         print("잘못된 입력입니다. 다시 입력해주세요.")
         continue
     
-    game_count += 1
-    computer_input = random.choice(['가위', '바위', '보'])
+    count += 1
+    computer = random.choice(['가위', '바위', '보'])
     
-    print("유저: {}, 컴퓨터: {}".format(user_input, computer_input))
+    print("유저: {}, 컴퓨터: {}".format(user, computer))
     
-    if user_input == computer_input:
+    if user == computer:
         print("비겼습니다!")
-        user_draw += 1
-    elif (user_input == '가위' and computer_input == '보') \
-        or (user_input == '바위' and computer_input == '가위') \
-        or (user_input == '보' and computer_input == '바위'):
+        draw += 1
+    elif (user == '가위' and computer == '보') \
+        or (user == '바위' and computer == '가위') \
+        or (user == '보' and computer == '바위'):
         print("유저가 이겼습니다!")
-        user_win += 1
+        win += 1
     else:
         print("컴퓨터가 이겼습니다!")
-        user_lose += 1
+        lose += 1
